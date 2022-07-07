@@ -8,6 +8,7 @@ import TelaLogin from "./components/TelaLogin/TelaLogin";
 
 //Importacao de estilizacoes
 import GlobalStyled from "./styles/GlobalStyled";
+import './style.css'
 
 export default function AppRoutes(){
 
