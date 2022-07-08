@@ -10,10 +10,18 @@ import TelaLogin from "./components/TelaLogin/TelaLogin";
 import GlobalStyled from "./styles/GlobalStyled";
 import './style.css'
 
+// Context 
+import CarrinhoContexto from "./context/CarrinhoContext";
+
 export default function AppRoutes(){
+
+    let [quantidadeCarrinho, setQuantidadeCarrinho] = React.useState(0)
 
     return(
 
+    <CarrinhoContexto.Provider value={{quantidadeCarrinho, setQuantidadeCarrinho}}>
+
+    
         <BrowserRouter>
             <Routes>
 
@@ -25,6 +33,8 @@ export default function AppRoutes(){
 
             <GlobalStyled/>
         </BrowserRouter>
+
+    </CarrinhoContexto.Provider>
 
     )
 }

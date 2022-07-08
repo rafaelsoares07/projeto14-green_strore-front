@@ -3,8 +3,15 @@ import logo from "../images/logob.svg"
 import header from "../images/header.png"
 import carrinho from "../images/carrinho.png"
 
+import { useContext } from "react";
+import CarrinhoContexto from "../context/CarrinhoContext";
+
+
 
 export default function Header(){
+
+    let {quantidadeCarrinho} = useContext(CarrinhoContexto)
+
     return(
         <Container>
             
@@ -12,7 +19,7 @@ export default function Header(){
                 <img src={carrinho}></img>  
 
                 <Num_Itens>
-                    <span>3</span>
+                    <span>{quantidadeCarrinho}</span>
                 </Num_Itens>
 
             </Carrinho>
