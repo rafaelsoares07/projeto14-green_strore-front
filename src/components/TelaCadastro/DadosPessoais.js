@@ -6,7 +6,7 @@ export default function DadosPessoais(){
             <HeaderDados>
                 Dados pessoais
             </HeaderDados>
-        
+            <input></input>
         </InputContainer>
     );
 }
@@ -16,9 +16,15 @@ const InputContainer = styled.div `
     width: 50%;
     padding: 20px;
     border-right: 1px solid #7CC644;
+
+    input {
+        width: 60%;
+        height: 50px;
+    }
 `
 const HeaderDados = styled.div `
     color: #7F7F7F;
     font-size: 30px;
     border-bottom: 1px solid #7CC644;
+    margin-bottom: 30px;
 `
