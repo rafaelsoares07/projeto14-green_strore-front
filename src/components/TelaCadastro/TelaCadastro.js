@@ -1,9 +1,7 @@
-import axios from 'axios';
 import styled from 'styled-components';
 import Header from '../../layouts/Header';
 import NavBar from '../../layouts/NavBar';
-import DadosPessoais from './DadosPessoais';
-import DadosEndereço from './DadosEndereço';
+import DadosCadastro from './DadosCadastro';
 
 export default function TelaCadastro(){
 
@@ -11,10 +9,7 @@ export default function TelaCadastro(){
         <Container>
             <Header />
             <NavBar />
-            <Dados>
-                <DadosPessoais />
-                <DadosEndereço />
-            </Dados>
+            <DadosCadastro />
         </Container>
     );
 }
