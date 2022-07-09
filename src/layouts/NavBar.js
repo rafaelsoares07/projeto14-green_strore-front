@@ -28,7 +28,9 @@ const Menu = styled.div`
 
 
     span{
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         color: white;
+        font-weight: 600;
     }
     
     
