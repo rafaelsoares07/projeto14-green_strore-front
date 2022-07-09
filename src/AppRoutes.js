@@ -13,12 +13,18 @@ import './style.css'
 
 // Context 
 import CarrinhoContexto from "./context/CarrinhoContext";
+import TokenContext from "./context/TokenContext";
 
 export default function AppRoutes(){
 
-    let [quantidadeCarrinho, setQuantidadeCarrinho] = React.useState(0)
+    const [token, setToken] = React.useState('')
+    const [quantidadeCarrinho, setQuantidadeCarrinho] = React.useState(0)
+
+    
 
     return(
+
+<TokenContext.Provider value={{token, setToken}}>
 
     <CarrinhoContexto.Provider value={{quantidadeCarrinho, setQuantidadeCarrinho}}>
 
@@ -37,6 +43,8 @@ export default function AppRoutes(){
         </BrowserRouter>
 
     </CarrinhoContexto.Provider>
+
+</TokenContext.Provider>
 
     )
 }
