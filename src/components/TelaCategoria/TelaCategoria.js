@@ -1,17 +1,23 @@
 import React from "react"
 import styled from "styled-components"
+import { useParams } from "react-router-dom"
 
 import axios from "axios"
 
 import Header from "../../layouts/Header"
 import NavBar from "../../layouts/NavBar"
 
-import CardProduto from "./CardProduto"
+import CardProduto from "../TelaInicial/CardProduto"
 
-export default function TelaInicial(){
+export default function TelaCategoria(){
+
+    const params = useParams();
+    const nameCategoria = params.name
 
     const [arrayProdutos, setArrayProdutos ] =  React.useState([])
-    
+
+    const produtosDaCategoria = arrayProdutos.filter(el=> el.categoria===nameCategoria)
+   
 
     function PegarDadosFail(error){
         alert(error)
@@ -34,7 +40,7 @@ export default function TelaInicial(){
         if(arrayProdutos!=[]){
             return(
                 <>
-                    {arrayProdutos.map((el, i)=> <CardProduto idProduto={el._id} key={i} urlImage={el.url} titulo={el.titulo} valor={el.valor} /> )}
+                    {produtosDaCategoria.map((el, i)=> <CardProduto idProduto={el._id} key={i} urlImage={el.url} titulo={el.titulo} valor={el.valor} /> )}
                 </>
             )
         }
@@ -86,7 +92,6 @@ const AreaProdutos = styled.div`
 
         
 `
-
 
 
 
