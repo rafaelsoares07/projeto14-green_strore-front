@@ -5,6 +5,7 @@ import React from "react";
 import TelaInicial from "./components/TelaInicial/TelaInicial";
 import TelaCadastro from "./components/TelaCadastro/TelaCadastro";
 import TelaLogin from "./components/TelaLogin/TelaLogin";
+import TelaCategoria from "./components/TelaCategoria/TelaCategoria";
 
 //Importacao de estilizacoes
 import GlobalStyled from "./styles/GlobalStyled";
@@ -26,6 +27,7 @@ export default function AppRoutes(){
             <Routes>
 
                 <Route path="/" element={<TelaInicial/>}/>
+                <Route path="categoria/:name" element={<TelaCategoria/>}/>
                 <Route path="/cadastro" element={<TelaCadastro/>}/>
                 <Route path="/login" element={<TelaLogin/>}/>
                 
