@@ -22,7 +22,7 @@ export default function Header(){
                 <span>Fazer Login</span>
             </BotaoLogin>
             
-            <Carrinho>
+            <Carrinho onClick={()=> navigate('/carrinho')}>
                 <img src={carrinho}></img>  
 
                 <Num_Itens>
@@ -71,6 +71,7 @@ const Carrinho = styled.div`
     position: absolute;
     top:15px;
     right: 20px;
+    cursor: pointer;
 
 `
 
