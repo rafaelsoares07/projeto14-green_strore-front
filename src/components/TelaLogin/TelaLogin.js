@@ -1,13 +1,19 @@
 import React from "react";
 import { useContext } from "react";
 import axios from "axios"
-import {Link, useNavigate} from "react-router-dom"
+import {Link, Navigate, useNavigate} from "react-router-dom"
 import styled from "styled-components"
+
+
+import Header from "../../layouts/Header";
+import NavBar from "../../layouts/NavBar"
 
 import TokenContext from "../../context/TokenContext";
 
 
 export default function TelaLogin(){
+    
+    const navigate = useNavigate()
 
     const {token, setToken} = useContext(TokenContext)
 
@@ -36,6 +42,7 @@ export default function TelaLogin(){
 
     function LoginUserSucess(response){
         setToken(response.data.token)
+        navigate('/')
     }
     function LoginUserFail(error){
         console.log(error)
@@ -43,6 +50,9 @@ export default function TelaLogin(){
 
 
     return(
+        <>
+        <Header/>
+        <NavBar/>
         <Container>
 
                 <form onSubmit={LoginUser}>
@@ -53,13 +63,55 @@ export default function TelaLogin(){
                 </form>
             
         </Container>
+        </>
     )
 }
 
 
 const Container = styled.div`
     width: 100%;
-    height: 100vh;
-    background-color: white;
+    height: 85vh;
+    background-color:#a68c69;
+    display: flex;
+    justify-content: center;
+
+    form{
+        width: 450px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        input{
+            margin: 10px;
+            width: 300px;
+            height: 50px;
+            border-radius: 5px;
+            border:none;
+        }
+
+        button{
+            border: none;
+            border-radius: 5px;
+            width: 120px;
+            height: 50px;   
+            font-size: 20px;
+            font-weight: 700;
+            color: #14480B;
+            border-radius: 5px;
+            border: 1px solid #49781B;
+            background-color: #A4D77E;
+            cursor: pointer;
+        }
+
+        a{
+            margin: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    }
+
 
 `

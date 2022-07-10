@@ -3,6 +3,7 @@ import logo from "../images/logob.svg"
 import header from "../images/header.png"
 import carrinho from "../images/carrinho.png"
 
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import CarrinhoContexto from "../context/CarrinhoContext";
 
@@ -10,10 +11,16 @@ import CarrinhoContexto from "../context/CarrinhoContext";
 
 export default function Header(){
 
+    const navigate = useNavigate()
+
     let {quantidadeCarrinho} = useContext(CarrinhoContexto)
 
     return(
         <Container>
+
+            <BotaoLogin onClick={()=> navigate('/login')}>
+                <span>Fazer Login</span>
+            </BotaoLogin>
             
             <Carrinho>
                 <img src={carrinho}></img>  
@@ -70,7 +77,7 @@ const Carrinho = styled.div`
 const Num_Itens = styled.div`
     width: 25px;
     height: 25px;
-    background-color: #7CC447;
+    background-color: #49781b;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -82,4 +89,26 @@ const Num_Itens = styled.div`
     top: -11px;
     right: -2px;
 
+`
+
+
+const BotaoLogin = styled.div`
+    border-radius: 5px;
+    width: 120px;
+    height: 35px;
+    background-color: red;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #49781b;
+    cursor: pointer;
+
+    span{
+        font-weight: 600;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: yellow;
+    }
 `
