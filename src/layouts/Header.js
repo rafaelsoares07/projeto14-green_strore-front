@@ -7,8 +7,6 @@ import { useContext } from "react";
 import CarrinhoContexto from "../context/CarrinhoContext";
 import { Link, useNavigate } from "react-router-dom";
 
-
-
 export default function Header(){
 
     let {quantidadeCarrinho} = useContext(CarrinhoContexto);
