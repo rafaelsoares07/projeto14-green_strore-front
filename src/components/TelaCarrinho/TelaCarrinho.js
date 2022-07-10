@@ -18,6 +18,7 @@ export default function TelaCarrinho(){
 
 const Container = styled.div `
     width: 100vw;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 `
