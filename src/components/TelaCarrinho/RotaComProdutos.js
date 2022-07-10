@@ -1,16 +1,25 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import Produtos from './Produtos';
 import CarrinhoContexto from '../../context/CarrinhoContext';
+import TokenContext from '../../context/TokenContext';
 
 export default function RotaComProdutos(){
 
     const { quantidadeCarrinho, arrayCompras, setArrayCompras } = useContext(CarrinhoContexto);
+    const { token } = useContext(TokenContext);
     const [valorProdutos, setValorProdutos] = useState(0);
 
-    function finalizarCompra(){
+    const navigate = useNavigate();
 
+    function finalizarCompra(){
+        if(!token){
+            alert('Faça o login ou cadastre-se para finalizar sua compra');
+            navigate('/login');
+        } else {
+            navigate('/finalizar');
+        }
     }
 
     return (
