@@ -33,7 +33,7 @@ export default function Header(){
             
 
             <Logo>
-                <img src={logo}/>
+                <img src={logo} onClick={() => navigate('/')} />
             </Logo>
             
         </Container>
@@ -53,6 +53,8 @@ const Container = styled.div`
 `
 
 const Logo = styled.div`
+
+    cursor: pointer;
     
     img{
         margin-top: 25px;
