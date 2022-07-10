@@ -6,11 +6,9 @@ import RotaSemProdutos from './RotaSemProdutos';
 
 export default function ProdutosCarrinho(){
 
-    const {arrayCompras} = useContext(CarrinhoContexto);
+    const { quantidadeCarrinho } = useContext(CarrinhoContexto);
 
-    const itensCarrinho = arrayCompras.length;
-
-    if(itensCarrinho > 0){
+    if(quantidadeCarrinho > 0){
         return (
             <Container>
                 <RotaComProdutos />

@@ -1,95 +1,32 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
 import Produtos from './Produtos';
+import CarrinhoContexto from '../../context/CarrinhoContext';
 
 export default function RotaComProdutos(){
 
-    /* const arrayProdutos = [
-        {
-        "url":"https://s3.amazonaws.com/produtos.vipcommerce.com.br/250x250/7f6595b2-f358-430a-85db-712bdda1bbcd.jpg",
-        "titulo": "Peixe Inte Xerelete 1kg",
-        "valor": 15.99,
-        "categoria":"proteinas"
-        }, 
-        {
-        "url":"https://s3.amazonaws.com/produtos.vipcommerce.com.br/250x250/41a5eefa-5390-4ea6-b71d-db355b79b90a.jpg",
-        "titulo": "File Peixe Panga 1kg",
-        "valor": 26.99,
-        "categoria":"proteinas"
-        },
-        {
-        "url":"https://s3.amazonaws.com/produtos.vipcommerce.com.br/250x250/dd1a38e6-5f01-4f51-a9ab-66d3e2d3b034.jpg",
-        "titulo": "Bife Milanesa Cha de Dentro",
-        "valor": 59.99,
-        "categoria":"proteinas"
-        },
-        {
-        "url":"https://s3.amazonaws.com/produtos.vipcommerce.com.br/250x250/92b5e22b-7715-4f91-a5bf-d1fd941354c7.jpg",
-        "titulo": "Bacalhau Saithe 1kg",
-        "valor": 85.79,
-        "categoria":"proteinas"
-        },
-        {
-        "url":"https://s3.amazonaws.com/produtos.vipcommerce.com.br/250x250/c6649678-dfff-4778-95a5-d3ee448f4d07.jpg",
-        "titulo": "Acem sem osso 1kg",
-        "valor": 25.99,
-        "categoria":"proteinas"
-        },
-        {
-            "url":"https://s3.amazonaws.com/produtos.vipcommerce.com.br/250x250/7f6595b2-f358-430a-85db-712bdda1bbcd.jpg",
-            "titulo": "Peixe Inte Xerelete 1kg",
-            "valor": 15.99,
-            "categoria":"proteinas"
-            }, 
-            {
-            "url":"https://s3.amazonaws.com/produtos.vipcommerce.com.br/250x250/41a5eefa-5390-4ea6-b71d-db355b79b90a.jpg",
-            "titulo": "File Peixe Panga 1kg",
-            "valor": 26.99,
-            "categoria":"proteinas"
-            },
-            {
-            "url":"https://s3.amazonaws.com/produtos.vipcommerce.com.br/250x250/dd1a38e6-5f01-4f51-a9ab-66d3e2d3b034.jpg",
-            "titulo": "Bife Milanesa Cha de Dentro",
-            "valor": 59.99,
-            "categoria":"proteinas"
-            },
-            {
-            "url":"https://s3.amazonaws.com/produtos.vipcommerce.com.br/250x250/92b5e22b-7715-4f91-a5bf-d1fd941354c7.jpg",
-            "titulo": "Bacalhau Saithe 1kg",
-            "valor": 85.79,
-            "categoria":"proteinas"
-            },
-            {
-            "url":"https://s3.amazonaws.com/produtos.vipcommerce.com.br/250x250/c6649678-dfff-4778-95a5-d3ee448f4d07.jpg",
-            "titulo": "Acem sem osso 1kg",
-            "valor": 25.99,
-            "categoria":"proteinas"
-            },
-            {
-                "url":"https://s3.amazonaws.com/produtos.vipcommerce.com.br/250x250/92b5e22b-7715-4f91-a5bf-d1fd941354c7.jpg",
-                "titulo": "Bacalhau Saithe 1kg",
-                "valor": 85.79,
-                "categoria":"proteinas"
-                },
-    ];
- */
+    const { quantidadeCarrinho, arrayCompras, setArrayCompras } = useContext(CarrinhoContexto);
+    const [valorProdutos, setValorProdutos] = useState(0);
 
-    let numeroProdutos = '2';
-    let valorProdutos = 'R$ 50,00';
+    function finalizarCompra(){
+
+    }
 
     return (
         <Container>
-            <Produtos />
+            <Produtos arrayCompras={arrayCompras} setArrayCompras={setArrayCompras} 
+                      setValorProdutos={setValorProdutos} />
             <Finalizar>
                 <div>
                     <span>Produtos:</span>
-                    <span>{numeroProdutos}</span>
+                    <span>{quantidadeCarrinho}</span>
                 </div>
                 <h1>
                     <span>Subtotal:</span>
                     <span>{valorProdutos}</span>
                 </h1>
-                <button>FINALIZAR COMPRA</button>
+                <button onClick={finalizarCompra}>FINALIZAR COMPRA</button>
                 <Redirect>
                     <Link to="/">Continuar comprando<ion-icon name="arrow-forward-circle-outline"></ion-icon></Link>
                 </Redirect>
@@ -112,27 +49,39 @@ const Finalizar = styled.div `
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     border: 1px solid lightgray;
+    background-color: rgba(180, 228, 156, 0.3);
     padding: 20px;
     margin: 60px 0px 0px 40px;
 
     div {
+        width: 90%;
         display: flex;
         justify-content: space-between;
+        font-size: 24px;
         margin-bottom: 20px;
     }
 
     h1 {
+        width: 90%;
         display: flex;
         justify-content: space-between;
-        margin-bottom: 20px;
+        margin-bottom: 50px;
     }
 
     button {
         width: 80%;
         height: 50px;
-        margin-bottom: 20px;
+        font-size: 20px;
+        font-weight: 700;
+        color: white;
+        background-color: #49781B;
+        border: none;
+        border-radius: 10px;
+        margin-bottom: 50px;
     }
+
 `
 
 const Redirect = styled.div `
@@ -141,9 +90,9 @@ const Redirect = styled.div `
     justify-content: center;
 
     a {
+        width: 100%;
         font-size: 20px;
         color: #49781B;
-        text-decoration: none;
         display: flex;
         align-items: center;
         justify-content: center;
