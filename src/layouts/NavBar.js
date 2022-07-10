@@ -1,19 +1,22 @@
 import styled from "styled-components";
 import logo from "../images/logob.svg"
 import header from "../images/header.png"
-
+import { Link } from "react-router-dom";
 
 export default function Header(){
     return(
         <Container>
             <Menu>
-                <span>Verduras</span>
-                <span>Legumes</span>
-                <span>Hortaliças</span>
-                <span></span>
-                <span>Frutas</span>
-                <span>Orgânicos</span>
-                <span>Carnes e peixes</span>
+
+            <Link to="/categoria/hortaliças">Hortaliças</Link>
+            <Link to="/categoria/proteinas">Proteinas</Link>
+            
+    
+            <Link to="/categoria/proteinas">Pronas</Link>
+
+            <Link to="/categoria/frutas">Frutas</Link>
+            <Link to="/categoria/organicos">Orgânicos</Link>
+            
             </Menu>
             
         </Container>
@@ -28,11 +31,18 @@ const Menu = styled.div`
     width: 100%;
     height: 45px;
 
-    span{
-        color: white;
-        font-size: 20px;
+    a{
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: 600;
+        text-decoration: none;
+        color: #FFFFFF;
+
     }
     
+    a:hover{
+        transform: scale(1.1);
+        color: #B4E49C;
+    }
     
 `
 
