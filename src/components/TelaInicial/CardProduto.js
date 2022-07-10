@@ -1,29 +1,48 @@
 import styled from "styled-components"
+import axios from 'axios';
 
 import { useContext } from "react";
-import CarrinhoContexto from "../../context/CarrinhoContext"
-
+import CarrinhoContexto from "../../context/CarrinhoContext";
+import TokenContext from "../../context/TokenContext";
 
 export default function CardProduto({urlImage, valor, titulo, idProduto}){
 
-    const id = idProduto
+    /* const id = idProduto
+    const API = 'http://localhost:5000/carrinho'; */
 
-    const {setQuantidadeCarrinho,quantidadeCarrinho, arrayCompras, setArrayCompras} = useContext(CarrinhoContexto)
+    const {setQuantidadeCarrinho, quantidadeCarrinho, arrayCompras, setArrayCompras} = useContext(CarrinhoContexto);
+    /* const { token } = useContext(TokenContext); */
 
     function adicionarCarrinho(){
         
         let qtd = quantidadeCarrinho + 1;
         setQuantidadeCarrinho(qtd);
 
-        const novoArray = [...arrayCompras, {
-                                                idProduto,
-                                                urlImage,
-                                                titulo,
-                                                valor
-                                            }];
+        const dadosCompra = {
+            idProduto,
+            urlImage,
+            titulo,
+            valor,
+            quantidade: 1
+        };
+
+        const novoArray = [...arrayCompras, dadosCompra];
         setArrayCompras(novoArray);
+
+       /*  const config = {
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        } */
+
+
+        /*console.log(dadosCompra)
         
-        console.log(arrayCompras)
+        const promise = axios.post(API, dadosCompra, config);
+
+        promise.catch(() => {
+            alert('Tente novamente');
+        }); */
     }
 
     return(

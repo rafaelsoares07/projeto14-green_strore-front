@@ -1,10 +1,45 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
-import CarrinhoContexto from '../../context/CarrinhoContext';
+import TokenContext from '../../context/TokenContext';
 
-export default function Produtos(){
+export default function Produtos({ arrayCompras, setArrayCompras, setValorProdutos }){
 
-    const {arrayCompras, setArrayCompras} = useContext(CarrinhoContexto);
+    const { token } = useContext(TokenContext);
+    const API = 'http://localhost:5000/carrinho';
+
+    function pegaTotal() {
+        if (arrayCompras.length > 0) {
+          return arrayCompras.reduce((previous, current) => {
+              return previous + current.value;
+          }, 0);
+        } else {
+          return 0;
+        }
+    }
+
+    const total = pegaTotal();
+
+    setValorProdutos(total);
+
+    /* useEffect(() => {
+
+        const config = {
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        } 
+
+        const promise = axios.get(API, config)
+            .then(response => {
+                setArrayCompras(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+                alert('Não foi possível obter os dados, tente novamente mais tarde');
+            });
+
+    }, []); */
         
     return (
         <Container>
@@ -15,8 +50,8 @@ export default function Produtos(){
                 <span>Preço</span>
             </Top>
             <ListaProdutos>
-                {arrayCompras.map((render, index) => <CardProduto  img={render.url} produto={render.titulo} 
-                                                                    valor={render.valor} quantidade={index} 
+                {arrayCompras.map((render, index) => <CardProduto  img={render.urlImage} produto={render.titulo} 
+                                                                    valor={render.valor} quantidade={render.quantidade} 
                                                                     key={index} />)}
             </ListaProdutos>
         </Container>
@@ -77,7 +112,7 @@ const InfosProduto = styled.div `
 
     span {
         width: 30%;
+        font-size: 16px;
         text-align: center;
-        background-color: aliceblue;
     }
 `
