@@ -80,11 +80,7 @@ const AreaProdutos = styled.div`
     justify-items: center;
     display: grid;
     grid-gap: 30px;
-    grid-template-columns: repeat(auto-fit,minmax(225px, 2fr));
-
-
-
-        
+    grid-template-columns: repeat(auto-fit,minmax(225px, 2fr));      
 `
 
 

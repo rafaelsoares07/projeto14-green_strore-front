@@ -93,7 +93,14 @@ export default function DadosCadastro(){
             </DadosEndereço>
         </Dados>
         <ButtonDiv>
-            <button type='submit'>CADASTRAR</button>
+            <button onClick={() => navigate('/')}>
+                <ion-icon name="caret-back-outline"></ion-icon>
+                VOLTAR
+            </button>
+            <button type='submit'>
+                CADASTRAR
+                <ion-icon name="caret-forward-outline"></ion-icon>
+            </button>
         </ButtonDiv>
         <Footer />
     </form>
@@ -146,12 +153,15 @@ const ButtonDiv = styled.div `
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     margin: 40px 0px 100px 0px;
 
     button {
         width: 20%;
         height: 50px;   
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-size: 24px;
         font-weight: 700;
         color: white;
@@ -160,6 +170,11 @@ const ButtonDiv = styled.div `
         background-color: #A4D77E;
         cursor: pointer;
     }
+
+    ion-icon {
+        font-size: 30px;
+    }
+
 `
 
 const Dados = styled.div `

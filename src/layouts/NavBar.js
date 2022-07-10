@@ -7,11 +7,13 @@ export default function Header(){
     return(
         <Container>
             <Menu>
-            <span>Verduras</span>
-            <span>Legumes</span>
-            <span></span>
-            <span>Frutas</span>
-            <span>Orgânicos</span>
+                <span>Verduras</span>
+                <span>Legumes</span>
+                <span>Hortaliças</span>
+                <span></span>
+                <span>Frutas</span>
+                <span>Orgânicos</span>
+                <span>Carnes e peixes</span>
             </Menu>
             
         </Container>
@@ -20,15 +22,15 @@ export default function Header(){
 
 const Menu = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     margin: 0 auto;
-    width: 600px;
+    width: 100%;
     height: 45px;
-
 
     span{
         color: white;
+        font-size: 20px;
     }
     
     

@@ -5,18 +5,25 @@ import carrinho from "../images/carrinho.png"
 
 import { useContext } from "react";
 import CarrinhoContexto from "../context/CarrinhoContext";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
 export default function Header(){
 
-    let {quantidadeCarrinho} = useContext(CarrinhoContexto)
+    let {quantidadeCarrinho} = useContext(CarrinhoContexto);
+    let navigate = useNavigate()
 
     return(
         <Container>
-            
+            <CadastroLogin>
+                <ion-icon name="person"></ion-icon>
+                <span>Olá! Clique aqui para <Link to='/cadastro'>se cadastrar</Link> ou, 
+                      se já possui uma conta, <Link to='/login'>faça login</Link></span>
+            </CadastroLogin>
             <Carrinho>
-                <img src={carrinho}></img>  
+                
+                <img src={carrinho} onClick={() => navigate('/carrinho')}></img>  
 
                 <Num_Itens>
                     <span>{quantidadeCarrinho}</span>
@@ -43,7 +50,6 @@ const Container = styled.div`
 
     position: relative;
 
-    
 `
 
 const Logo = styled.div`
@@ -60,10 +66,16 @@ const Carrinho = styled.div`
     padding: 8px;
     border-radius: 50%;
     background-color: #FFFFFF;
-    
+
     position: absolute;
     top:15px;
     right: 20px;
+
+    img {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    } 
 
 `
 
@@ -82,4 +94,28 @@ const Num_Itens = styled.div`
     top: -11px;
     right: -2px;
 
+`
+
+const CadastroLogin = styled.div `
+    width: 250px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    color: white;
+    position: absolute;
+    background-color: rgb(73, 120, 27, 0.8);
+    top: 10px;
+    right: 100px;
+    padding: 5px;
+
+    ion-icon {
+        font-size: 100px;
+        color: #0C3904;
+        margin-right: 10px;
+    }
+
+    a {
+        color: white;
+    }
 `

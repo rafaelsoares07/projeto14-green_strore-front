@@ -9,12 +9,16 @@ export default function CardProduto({urlImage, valor, titulo,idProduto}){
 
     const id = idProduto
 
-    const {setQuantidadeCarrinho,quantidadeCarrinho} = useContext(CarrinhoContexto)
+    const {setQuantidadeCarrinho,quantidadeCarrinho, arrayCompras, setArrayCompras} = useContext(CarrinhoContexto)
 
     function adicionarCarrinho(){
         
-        let qtd = quantidadeCarrinho+1
-        setQuantidadeCarrinho(qtd)
+        let qtd = quantidadeCarrinho + 1;
+        setQuantidadeCarrinho(qtd);
+
+        const novoArray = [...arrayCompras, idProduto];
+        setArrayCompras(novoArray);
+
     }
 
     return(
@@ -42,7 +46,7 @@ const L_Card = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
-
+        
         img{
             width: 100%;
         }

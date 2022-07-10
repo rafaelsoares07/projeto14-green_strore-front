@@ -13,14 +13,16 @@ import './style.css'
 
 // Context 
 import CarrinhoContexto from "./context/CarrinhoContext";
+import { useState } from "react";
 
 export default function AppRoutes(){
 
-    let [quantidadeCarrinho, setQuantidadeCarrinho] = React.useState(0)
+    let [quantidadeCarrinho, setQuantidadeCarrinho] = React.useState(0);
+    let [arrayCompras, setArrayCompras] = useState([]);
 
     return(
 
-    <CarrinhoContexto.Provider value={{quantidadeCarrinho, setQuantidadeCarrinho}}>
+    <CarrinhoContexto.Provider value={{quantidadeCarrinho, setQuantidadeCarrinho, arrayCompras, setArrayCompras}}>
 
     
         <BrowserRouter>

@@ -1,6 +1,10 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
+import CarrinhoContexto from '../../context/CarrinhoContext';
 
-export default function Produtos( { arrayProdutos }){
+export default function Produtos(){
+
+    const {arrayCompras, setArrayCompras} = useContext(CarrinhoContexto);
         
     return (
         <Container>
@@ -11,7 +15,7 @@ export default function Produtos( { arrayProdutos }){
                 <span>Preço</span>
             </Top>
             <ListaProdutos>
-                {arrayProdutos.map((render, index) => <CardProduto  img={render.url} produto={render.titulo} 
+                {arrayCompras.map((render, index) => <CardProduto  img={render.url} produto={render.titulo} 
                                                                     valor={render.valor} quantidade={index} 
                                                                     key={index} />)}
             </ListaProdutos>
@@ -31,7 +35,6 @@ function CardProduto({ img, produto, quantidade, valor}){
     );
 
 }
-
 
 const Container = styled.div `
     width: 60%;

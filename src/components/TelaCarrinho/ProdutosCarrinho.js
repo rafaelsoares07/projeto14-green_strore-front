@@ -1,26 +1,28 @@
 import styled from 'styled-components';
+import { useContext } from 'react';
+import CarrinhoContexto from '../../context/CarrinhoContext';
 import RotaComProdutos from './RotaComProdutos';
 import RotaSemProdutos from './RotaSemProdutos';
 
 export default function ProdutosCarrinho(){
 
-    /* const definirRota = prompt('rota?');
+    const {arrayCompras} = useContext(CarrinhoContexto);
 
-    if(definirRota === 'sem'){
-        return (
-            <Container>
-                <RotaSemProdutos />
-            </Container>
-        );
-    } */
+    const itensCarrinho = arrayCompras.length;
 
-    /* else { */
+    if(itensCarrinho > 0){
         return (
             <Container>
                 <RotaComProdutos />
             </Container>
         );
-    /* } */
+    } else {
+        return (
+            <Container>
+                <RotaSemProdutos />
+            </Container>
+        );
+    }
 
 }
 
