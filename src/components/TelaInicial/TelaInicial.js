@@ -74,7 +74,6 @@ const Container = styled.div`
 
 const AreaProdutos = styled.div`
     min-height: 85vh;
-    background-color:#a68c69;
     padding: 30px;
     justify-content: center;
     justify-items: center;
