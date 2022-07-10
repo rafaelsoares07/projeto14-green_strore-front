@@ -3,6 +3,7 @@ import logo from "../images/logob.svg"
 import header from "../images/header.png"
 import carrinho from "../images/carrinho.png"
 
+/* import { useNavigate } from "react-router-dom"; */
 import { useContext } from "react";
 import CarrinhoContexto from "../context/CarrinhoContext";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,7 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 export default function Header(){
 
     let {quantidadeCarrinho} = useContext(CarrinhoContexto);
-    let navigate = useNavigate()
+    let navigate = useNavigate();
 
     return(
         <Container>
@@ -70,6 +71,7 @@ const Carrinho = styled.div`
     position: absolute;
     top:15px;
     right: 20px;
+    cursor: pointer;
 
     img {
         width: 30px;
@@ -82,7 +84,7 @@ const Carrinho = styled.div`
 const Num_Itens = styled.div`
     width: 25px;
     height: 25px;
-    background-color: #7CC447;
+    background-color: #49781b;
     border-radius: 50%;
     display: flex;
     justify-content: center;

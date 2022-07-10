@@ -1,11 +1,10 @@
 import styled from "styled-components"
 
-
 import { useContext } from "react";
 import CarrinhoContexto from "../../context/CarrinhoContext"
 
 
-export default function CardProduto({urlImage, valor, titulo,idProduto}){
+export default function CardProduto({urlImage, valor, titulo, idProduto}){
 
     const id = idProduto
 
@@ -16,9 +15,15 @@ export default function CardProduto({urlImage, valor, titulo,idProduto}){
         let qtd = quantidadeCarrinho + 1;
         setQuantidadeCarrinho(qtd);
 
-        const novoArray = [...arrayCompras, idProduto];
+        const novoArray = [...arrayCompras, {
+                                                idProduto,
+                                                urlImage,
+                                                titulo,
+                                                valor
+                                            }];
         setArrayCompras(novoArray);
-
+        
+        console.log(arrayCompras)
     }
 
     return(
