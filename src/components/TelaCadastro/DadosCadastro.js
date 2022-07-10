@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import DefaultInput from '../../layouts/default-input';
 import { useNavigate } from 'react-router-dom';
+import DefaultInput from '../../layouts/default-input';
+import Footer from '../../layouts/Footer';
 
 export default function DadosCadastro(){
 
@@ -93,7 +94,8 @@ export default function DadosCadastro(){
         </Dados>
         <ButtonDiv>
             <button type='submit'>CADASTRAR</button>
-        </ButtonDiv> 
+        </ButtonDiv>
+        <Footer />
     </form>
 
     );
@@ -145,15 +147,15 @@ const ButtonDiv = styled.div `
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 40px 0px 40px 0px;
+    margin: 40px 0px 100px 0px;
 
     button {
         width: 20%;
         height: 50px;   
-        font-size: 20px;
+        font-size: 24px;
         font-weight: 700;
-        color: #14480B;
-        border-radius: 5px;
+        color: white;
+        border-radius: 20px;
         border: 1px solid #49781B;
         background-color: #A4D77E;
         cursor: pointer;
