@@ -31,11 +31,6 @@ const Menu = styled.div`
     width: 100%;
     height: 45px;
 
-
-    span{
-        
-    }
-
     a{
         font-family: 'Courier New', Courier, monospace;
         font-weight: 600;

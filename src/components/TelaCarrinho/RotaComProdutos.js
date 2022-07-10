@@ -4,7 +4,7 @@ import Produtos from './Produtos';
 
 export default function RotaComProdutos(){
 
-    const arrayProdutos = [
+    /* const arrayProdutos = [
         {
         "url":"https://s3.amazonaws.com/produtos.vipcommerce.com.br/250x250/7f6595b2-f358-430a-85db-712bdda1bbcd.jpg",
         "titulo": "Peixe Inte Xerelete 1kg",
@@ -72,13 +72,14 @@ export default function RotaComProdutos(){
                 "categoria":"proteinas"
                 },
     ];
+ */
 
-    let numeroProdutos = arrayProdutos.length;
+    let numeroProdutos = '2';
     let valorProdutos = 'R$ 50,00';
 
     return (
         <Container>
-            <Produtos arrayProdutos={arrayProdutos} />
+            <Produtos />
             <Finalizar>
                 <div>
                     <span>Produtos:</span>

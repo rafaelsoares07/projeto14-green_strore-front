@@ -20,7 +20,7 @@ export default function RotaSemProdutos(){
 
 const DadosCarrinho = styled.div `
     width: 60%;
-    height: inherit;
+    min-height: inherit;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,7 +44,7 @@ const Circle = styled.div `
     align-items: center;
     border: 2px dashed #49781B;
     border-radius: 50%;
-    margin: 60px 0px 40px 0px;
+    margin: 200px 0px 40px 0px;
 
     ion-icon {
         font-size: 100px;

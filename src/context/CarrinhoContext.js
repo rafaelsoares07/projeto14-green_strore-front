@@ -1,3 +1,5 @@
 import { createContext } from "react";
-const CarrinhoContexto = createContext("")
-export default CarrinhoContexto
+
+const CarrinhoContexto = createContext("");
+
+export default CarrinhoContexto;

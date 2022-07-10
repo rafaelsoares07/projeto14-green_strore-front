@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
+import { useState } from "react";
 
 //Importação de telas 
 import TelaInicial from "./components/TelaInicial/TelaInicial";
@@ -20,15 +21,13 @@ export default function AppRoutes(){
 
     const [token, setToken] = React.useState('')
     const [quantidadeCarrinho, setQuantidadeCarrinho] = React.useState(0)
-
-    
+    let [arrayCompras, setArrayCompras] = useState([]);    
 
     return(
 
 <TokenContext.Provider value={{token, setToken}}>
 
-    <CarrinhoContexto.Provider value={{quantidadeCarrinho, setQuantidadeCarrinho}}>
-
+    <CarrinhoContexto.Provider value={{quantidadeCarrinho, setQuantidadeCarrinho, arrayCompras, setArrayCompras}}>
     
         <BrowserRouter>
             <Routes>
@@ -51,7 +50,6 @@ export default function AppRoutes(){
 }
 
 /*
-    <Route path="/login"/>
-    <Route path="/carrinho"/>
+    
     <Route path="/finalizar"/>*/
                 

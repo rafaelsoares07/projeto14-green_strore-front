@@ -3,27 +3,26 @@ import logo from "../images/logob.svg"
 import header from "../images/header.png"
 import carrinho from "../images/carrinho.png"
 
-import { useNavigate } from "react-router-dom";
+/* import { useNavigate } from "react-router-dom"; */
 import { useContext } from "react";
 import CarrinhoContexto from "../context/CarrinhoContext";
-
-
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Header(){
 
-    const navigate = useNavigate()
-
-    let {quantidadeCarrinho} = useContext(CarrinhoContexto)
+    let {quantidadeCarrinho} = useContext(CarrinhoContexto);
+    let navigate = useNavigate();
 
     return(
         <Container>
-
-            <BotaoLogin onClick={()=> navigate('/login')}>
-                <span>Fazer Login</span>
-            </BotaoLogin>
-            
-            <Carrinho onClick={()=> navigate('/carrinho')}>
-                <img src={carrinho}></img>  
+            <CadastroLogin>
+                <ion-icon name="person"></ion-icon>
+                <span>Olá! Clique aqui para <Link to='/cadastro'>se cadastrar</Link> ou, 
+                      se já possui uma conta, <Link to='/login'>faça login</Link></span>
+            </CadastroLogin>
+            <Carrinho>
+                
+                <img src={carrinho} onClick={() => navigate('/carrinho')}></img>  
 
                 <Num_Itens>
                     <span>{quantidadeCarrinho}</span>
@@ -33,7 +32,7 @@ export default function Header(){
             
 
             <Logo>
-                <img src={logo}/>
+                <img src={logo} onClick={() => navigate('/')} />
             </Logo>
             
         </Container>
@@ -50,10 +49,11 @@ const Container = styled.div`
 
     position: relative;
 
-    
 `
 
 const Logo = styled.div`
+
+    cursor: pointer;
     
     img{
         margin-top: 25px;
@@ -67,11 +67,17 @@ const Carrinho = styled.div`
     padding: 8px;
     border-radius: 50%;
     background-color: #FFFFFF;
-    
+
     position: absolute;
     top:15px;
     right: 20px;
     cursor: pointer;
+
+    img {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    } 
 
 `
 
@@ -92,24 +98,26 @@ const Num_Itens = styled.div`
 
 `
 
-
-const BotaoLogin = styled.div`
-    border-radius: 5px;
-    width: 120px;
-    height: 35px;
-    background-color: red;
-    position: absolute;
-    top: 10px;
-    left: 10px;
+const CadastroLogin = styled.div `
+    width: 250px;
+    height: 60px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-color: #49781b;
-    cursor: pointer;
+    font-size: 10px;
+    color: white;
+    position: absolute;
+    background-color: rgb(73, 120, 27, 0.8);
+    top: 10px;
+    right: 100px;
+    padding: 5px;
 
-    span{
-        font-weight: 600;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        color: yellow;
+    ion-icon {
+        font-size: 100px;
+        color: #0C3904;
+        margin-right: 10px;
+    }
+
+    a {
+        color: white;
     }
 `
