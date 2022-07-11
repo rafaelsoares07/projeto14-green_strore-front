@@ -25,7 +25,9 @@ export default function RotaComProdutos(){
                 headers: {
                     'Authorization': 'Bearer ' + token
                 }
-            } 
+            }
+
+            const compraFinalizada = {...arrayCompras, total: valorProdutos}
 
             const promise = axios.post(arrayCompras, config);
 

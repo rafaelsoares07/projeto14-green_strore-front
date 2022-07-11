@@ -4,21 +4,14 @@ import TokenContext from '../../context/TokenContext';
 
 export default function Produtos({ arrayCompras, setArrayCompras, setValorProdutos }){
 
-    const [soma, setSoma] = useState(0);
+    let totalCompras=0
 
-    function pegaTotal() {
-        if (arrayCompras.length > 0) {
-          return arrayCompras.reduce((previous, current) => {
-              return previous + current.value;
-          }, 0);
-        } else {
-          return 0;
-        }
+    for(let i= 0 ; i<arrayCompras.length;i++){
+        //console.log(typeof(arrayCompras[i].valor))
+        totalCompras+=parseFloat(arrayCompras[i].valor);
     }
 
-    const total = pegaTotal();
-
-    setValorProdutos(total);
+    setValorProdutos(totalCompras.toFixed(2));
         
     return (
         <Container>
