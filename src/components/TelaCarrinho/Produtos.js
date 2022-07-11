@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
-import axios from 'axios';
+import { useContext, useState } from 'react';
 import styled from 'styled-components';
 import TokenContext from '../../context/TokenContext';
 
@@ -9,46 +8,10 @@ export default function Produtos({ arrayCompras, setArrayCompras, setValorProdut
 
     for(let i= 0 ; i<arrayCompras.length;i++){
         //console.log(typeof(arrayCompras[i].valor))
-        totalCompras+=parseFloat(arrayCompras[i].valor)
+        totalCompras+=parseFloat(arrayCompras[i].valor);
     }
-
-
-
-    const { token } = useContext(TokenContext);
-    const API = 'http://localhost:5000/carrinho';
-
-    function pegaTotal() {
-        if (arrayCompras.length > 0) {
-          return arrayCompras.reduce((previous, current) => {
-              return previous + current.value;
-          }, 0);
-        } else {
-          return 0;
-        }
-    }
-
-    const total = pegaTotal();
 
     setValorProdutos(totalCompras.toFixed(2));
-
-    /* useEffect(() => {
-
-        const config = {
-            headers: {
-                'Authorization': 'Bearer ' + token
-            }
-        } 
-
-        const promise = axios.get(API, config)
-            .then(response => {
-                setArrayCompras(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-                alert('Não foi possível obter os dados, tente novamente mais tarde');
-            });
-
-    }, []); */
         
     return (
         <Container>
