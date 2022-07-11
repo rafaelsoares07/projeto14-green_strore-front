@@ -102,7 +102,7 @@ export default function DadosCadastro(){
                 <ion-icon name="caret-forward-outline"></ion-icon>
             </button>
         </ButtonDiv>
-        <Footer />
+      
     </form>
 
     );
