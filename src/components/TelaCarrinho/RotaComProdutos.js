@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import Produtos from './Produtos';
@@ -11,6 +12,7 @@ export default function RotaComProdutos(){
     const { token } = useContext(TokenContext);
     const [valorProdutos, setValorProdutos] = useState(0);
 
+    const API = 'http://localhost:5000/checkout';
     const navigate = useNavigate();
 
     function finalizarCompra(){
@@ -18,7 +20,20 @@ export default function RotaComProdutos(){
             alert('Faça o login ou cadastre-se para finalizar sua compra');
             navigate('/login');
         } else {
-            navigate('/finalizar');
+
+            const config = {
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            } 
+
+            const promise = axios.post(arrayCompras, config);
+
+            promise.then(navigate('/checkout'));
+            promise.catch((error) => {
+                console.log(error);
+                alert('Não foi possível obter os dados, tente novamente mais tarde');
+            });
         }
     }
 
