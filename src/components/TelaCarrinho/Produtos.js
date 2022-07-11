@@ -5,6 +5,15 @@ import TokenContext from '../../context/TokenContext';
 
 export default function Produtos({ arrayCompras, setArrayCompras, setValorProdutos }){
 
+    let totalCompras=0
+
+    for(let i= 0 ; i<arrayCompras.length;i++){
+        //console.log(typeof(arrayCompras[i].valor))
+        totalCompras+=parseFloat(arrayCompras[i].valor)
+    }
+
+
+
     const { token } = useContext(TokenContext);
     const API = 'http://localhost:5000/carrinho';
 
@@ -20,7 +29,7 @@ export default function Produtos({ arrayCompras, setArrayCompras, setValorProdut
 
     const total = pegaTotal();
 
-    setValorProdutos(total);
+    setValorProdutos(totalCompras.toFixed(2));
 
     /* useEffect(() => {
 
