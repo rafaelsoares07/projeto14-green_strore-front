@@ -16,7 +16,7 @@ export default function TelaLogin(){
     
     const navigate = useNavigate()
 
-    const {token, setToken} = useContext(TokenContext)
+    const {token, setToken, setUserLogado, userLogado} = useContext(TokenContext)
 
     console.log(token)
 
@@ -34,7 +34,7 @@ export default function TelaLogin(){
     function LoginUser(event){
         event.preventDefault();
         
-        const promisse = axios.post("http://localhost:5000/login",user)
+        const promisse = axios.post("https://green-ecomecer.herokuapp.com/login",user)
 
         promisse.then(LoginUserSucess)
         promisse.catch(LoginUserFail)
@@ -42,6 +42,7 @@ export default function TelaLogin(){
     }
 
     function LoginUserSucess(response){
+        setUserLogado(response.data.UsuarioExiste)
         setToken(response.data.token)
         navigate('/')
     }

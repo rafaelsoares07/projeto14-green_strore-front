@@ -28,7 +28,7 @@ export default function TelaCategoria(){
     }
 
     React.useEffect(()=>{
-        const promisse = axios.get("http://localhost:5000/")
+        const promisse = axios.get("https://green-ecomecer.herokuapp.com/")
 
         promisse.then(PegarDadosSucess)
         promisse.catch(PegarDadosFail)

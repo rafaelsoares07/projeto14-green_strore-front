@@ -7,19 +7,37 @@ import carrinho from "../images/carrinho.png"
 import { useContext } from "react";
 import CarrinhoContexto from "../context/CarrinhoContext";
 import { Link, useNavigate } from "react-router-dom";
+import TokenContext from "../context/TokenContext";
 
 export default function Header(){
 
+    const {userLogado} = useContext(TokenContext)
     let {quantidadeCarrinho} = useContext(CarrinhoContexto);
     let navigate = useNavigate();
 
+    function UsuarioLogado(){
+        if(userLogado!=''){
+            return(
+                <Logado>
+                    <ion-icon name="person"></ion-icon>
+                    <span>Olá! {userLogado.nome}</span>
+                </Logado>
+            )
+        }
+        else{
+            return(
+                <CadastroLogin>
+                    <ion-icon name="person"></ion-icon>
+                    <span>Olá! Clique aqui para <Link to='/cadastro'>se cadastrar</Link> ou, 
+                    se já possui uma conta, <Link to='/login'>faça login</Link></span>
+                </CadastroLogin>
+            )
+        }
+    }
+
     return(
         <Container>
-            <CadastroLogin>
-                <ion-icon name="person"></ion-icon>
-                <span>Olá! Clique aqui para <Link to='/cadastro'>se cadastrar</Link> ou, 
-                      se já possui uma conta, <Link to='/login'>faça login</Link></span>
-            </CadastroLogin>
+            {UsuarioLogado()}
             <Carrinho>
                 
                 <img src={carrinho} onClick={() => navigate('/carrinho')}></img>  
@@ -121,3 +139,30 @@ const CadastroLogin = styled.div `
         color: white;
     }
 `
+
+const Logado = styled.div `
+    width: 250px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    color: white;
+    position: absolute;
+    background-color: rgb(73, 120, 27, 0.8);
+    top: 10px;
+    right: 100px;
+    padding: 5px;
+
+    ion-icon {
+        font-size: 50px;
+        color: #0C3904;
+        margin-right: 10px;
+    }
+
+    a {
+        font-weight: 700;
+        font-size: 18px;
+        color: white;
+    }
+`
+

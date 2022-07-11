@@ -12,7 +12,6 @@ export default function RotaComProdutos(){
     const { token } = useContext(TokenContext);
     const [valorProdutos, setValorProdutos] = useState(0);
 
-    const API = 'http://localhost:5000/checkout';
     const navigate = useNavigate();
 
     function finalizarCompra(){
@@ -29,9 +28,13 @@ export default function RotaComProdutos(){
 
             const compraFinalizada = {...arrayCompras, total: valorProdutos}
 
-            const promise = axios.post(arrayCompras, config);
+            const promise = axios.post("https://green-ecomecer.herokuapp.com/checkout",compraFinalizada, config);
 
-            promise.then(navigate('/checkout'));
+            promise.then(response=>{
+                navigate('/checkout')
+            });
+
+
             promise.catch((error) => {
                 console.log(error);
                 alert('Não foi possível obter os dados, tente novamente mais tarde');
@@ -52,7 +55,7 @@ export default function RotaComProdutos(){
                     <span>Subtotal:</span>
                     <span>{valorProdutos}</span>
                 </h1>
-                <button onClick={finalizarCompra}>FINALIZAR COMPRA</button>
+                <button onClick={()=>finalizarCompra()}>FINALIZAR COMPRA</button>
                 <Redirect>
                     <Link to="/">Continuar comprando<ion-icon name="arrow-forward-circle-outline"></ion-icon></Link>
                 </Redirect>

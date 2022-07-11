@@ -8,7 +8,7 @@ import Footer from '../../layouts/Footer';
 export default function DadosCadastro(){
 
     const navigate = useNavigate();
-    const API = 'http://localhost:5000/cadastro';
+    const API = 'https://green-ecomecer.herokuapp.com/cadastro';
 
     //variaveis dados pessoais
     const [nome, setNome] = useState('');

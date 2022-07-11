@@ -20,13 +20,14 @@ import TokenContext from "./context/TokenContext";
 
 export default function AppRoutes(){
 
+    const [userLogado, setUserLogado] = React.useState('')
     const [token, setToken] = React.useState('')
     const [quantidadeCarrinho, setQuantidadeCarrinho] = React.useState(0)
     let [arrayCompras, setArrayCompras] = useState([]);    
 
     return(
 
-<TokenContext.Provider value={{token, setToken}}>
+<TokenContext.Provider value={{token, setToken,userLogado, setUserLogado}}>
 
     <CarrinhoContexto.Provider value={{quantidadeCarrinho, setQuantidadeCarrinho, arrayCompras, setArrayCompras}}>
     
